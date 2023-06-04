@@ -10,7 +10,7 @@ The original website: https://podcast.sprovoost.nl/@nado
 - Clone the code
 
 ```sh
-git clone https://github.com/oneforalone/bitcoin-explain-podcast
+git clone https://github.com/oneforalone/bitcoin-explain-podcast.git
 ```
 
 - Run
