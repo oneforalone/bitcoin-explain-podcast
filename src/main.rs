@@ -2,11 +2,7 @@ use std::{
     fs::{create_dir_all, File},
     io::copy,
     path::Path,
-    thread,
-    time::Duration,
 };
-
-use thread::sleep;
 
 use reqwest::Client;
 use scraper::{Html, Selector};
@@ -34,7 +30,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             break;
         }
 
-        sleep(Duration::from_secs(1));
         create_dir_all(year.to_string().as_str()).unwrap();
 
         for name in document.select(&ep_selector) {
@@ -66,8 +61,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 .header("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36")
                 .send()
                 .await?;
-
-            sleep(Duration::from_secs(1));
 
             let episode = req.bytes().await?;
 
